@@ -1,0 +1,31 @@
+body{
+    background-color: black;
+    color: white;
+}
+.topDiv{
+    color: white;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.letters{
+    margin: 2px;
+}
+span{
+    color: aliceblue;
+}
+
+.red{
+background-color: red;
+display: inline-block;
+width: 20px;
+}
+.green{
+    background-color: green;
+    
+}
+.div{
+    color:white;
+    display: flex;
+    justify-content: center;
+}
