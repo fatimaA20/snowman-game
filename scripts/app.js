@@ -86,10 +86,20 @@ function init() {
     restart.addEventListener('click', reloadPage)
 
     const help= document.querySelector('#help')
+    let hintsection=document.querySelector('#hint')
 
+    let helpCounter = 0
     function helps(){
-
+        if (helpCounter < 2){
+     let hiddinletter =hiddenword.indexOf('- ')
+     hintsection.innerHTML=word[hiddinletter]
+     helpCounter++
+        }
+        else{
+            hintsection.innerHTML='No hint available !!'
+        }
     }
+
     help.addEventListener('click',helps)
 }
 window.addEventListener('DOMContentLoaded', init)
