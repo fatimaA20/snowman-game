@@ -65,7 +65,7 @@ function init() {
                 counter++
                 if (counter == 7) {
                     winOrfail.innerHTML = 'Try again !!'
-                    wordSection.innerHTML=word;
+                    wordSection.innerHTML=word.join('');
                     return
                 }
             }
