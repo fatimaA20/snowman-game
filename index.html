@@ -7,39 +7,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css">
     <script src="scripts/app.js"></script>
-    <title>Document</title>
+    <title>Snowman game</title>
 </head>
 
 <body>
-    <!-- header -->
-    <div class="topDiv">Snowman</div>
-    <br>
-    <!-- Score of the user -->
-    <!-- <div class="'score">Your score : <span class="'score"> </span></div> -->
-    <br>
-    <!-- letters section -->
-    <div class="letters-div"></div>
-    <br>
-    <!-- buttom section -->
-    <div class="buttom">
-        <!-- word section -->
-        <div class="word"> </div>
-        <br>
-        <!-- button sec -->
-        <div class="buttons">
-            <button id="reset">reset</button>
-            <button id ='help'>help</button>
-            <br>
-            <h3>click help for 2 hint :  <span id="hint"> </span></h3>
-        </div>
-        <p></p>
-        <br>
-        <!-- pic sec -->
-        <div class="snowman">
-            <img src="images/empty.jpg">
-        </div>
+    <!-- Header -->
+    <div class="topDiv">
+        <span class="snowflake"></span> Snowman
     </div>
 
+    <div class="main-content">
+        <!-- Left side (letters, word, and buttons) -->
+        <div class="left-side">
+            <!-- Letters section -->
+            <div class="letters-div"></div>
+
+            <!-- Word section -->
+            <div class="word"></div>
+
+            <!-- Buttons section -->
+            <div class="buttons">
+                <button id="reset">Reset</button>
+                <button id="help">Hint</button>
+                <h3 id="hint">You have <span id="hint-count-text">2</span> hint(s) remaining.</h3>
+            </div>
+            <div class="message">
+                <p id="winOrfail"></p>
+            </div>
+        </div>
+
+           <!-- Win/Fail message -->
+    <div class="message">
+        <p id="winOrfail"></p>
+    </div>
+
+        <!-- Right side (snowman) -->
+        <div class="right-side">
+            <div class="snowman">
+                <img src="images/empty.jpg" alt="Snowman Image" class="snowman-img">
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

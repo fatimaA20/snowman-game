@@ -1,36 +1,282 @@
-body{
-    background-color: black;
-    color: white;
-    justify-content: center;
-}
-.topDiv{
-    color: white;
-    text-align: center;
-    font-size: xx-large;
-}
-
-.letters{
-    margin: 2px;
-}
-span{
-    color: aliceblue;
+body::before {
+  content: "";
+  background: rgba(0, 0, 0, 0.35); /* Adjust the last value (0.5) to control the overlay's opacity */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place the overlay behind the content */
 }
 
-.red{
-background-color: red;
-display: inline-block;
-width: 20px;
-}
-.green{
-    background-color: green;
-    
-}
-.div{
-    color:white;
-    display: flex;
-    justify-content: center;
+body {
+  background-image: url('../images/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-#hint{
-    color: blueviolet;
+
+
+/* Style for the title */
+.topDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  text-align: center;
+  padding: 30px 0;
+  position: relative;
+  color: white;
+  background-color: rgba(128, 128, 128, 0.2);
+  animation: titleAnimation 5s ease infinite; /* Add an animation to the title */
+  transform-origin: center;
 }
+
+/* Define the animation keyframes */
+@keyframes titleAnimation {
+  0% {
+    transform: scale(1); /* Initial scale */
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1); /* Scale up halfway through animation */
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1); /* Return to original scale */
+    opacity: 1;
+  }
+}
+
+/* Additional styles for the title when hovered */
+.topDiv:hover {
+  animation: none; /* Remove the animation on hover */
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8); /* Add a text shadow on hover */
+  transition: text-shadow 0.3s ease; /* Add a smooth transition effect */
+}
+
+
+
+/* Style for the main content area */
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* Style for the left side (letters, word, and buttons) */
+.left-side {
+  flex: 1;
+  padding-right: 20px;
+}
+
+/* Main snowflake effect */
+.topDiv::before {
+  content: "\2744";
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+/* Additional small snowflake effect */
+.topDiv::after {
+  content: "\2744";
+  font-size: 30px;
+  right: 5px;
+}
+
+/* Style for the letters section */
+.letters-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.letters {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Make the letter box circular */
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background-image: url('../images/snow.jpg');
+  background-size: contain;
+  background-position: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1;
+}
+
+.letters::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  opacity: 0.5;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.letters:hover {
+  background-color: #ccc; /* Add gray background on hover */
+  transform: scale(1.1); /* Enlarge the letter box on hover */
+}
+
+.letters span {
+  position: relative;
+  z-index: 1;
+}
+
+/* CSS for the gray overlay effect when the game ends */
+.gray-overlay {
+  filter: grayscale(100%);
+  opacity: 0.6; /* You can adjust the opacity as needed */
+  pointer-events: none; /* Disable pointer events on the grayed-out letters */
+  color: goldenrod;
+}
+
+/* Style for the word section */
+.word {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 40px; /* Increase the font size */
+  color: white; /* Set text color to white */
+  background-color: rgba(192, 192, 192, 0.5); /* Light gray background */
+  padding: 10px; /* Add some padding to space it out */
+}
+
+
+.word span {
+  margin: 0 10px;
+}
+
+/* Style for the win/fail message */
+/* Style for the win/fail message */
+p {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center; /* Center-align the text */
+}
+
+/* Style for "You Win!" message */
+p.win-message {
+  color: green; /* Happy green color */
+}
+
+/* Style for "Try Again!" message */
+p.fail-message {
+  color: red; /* Sad red color */
+}
+
+
+/* Style for the reset and help buttons */
+.buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #eee;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #dddddd1e;
+}
+
+  /* Style for the hint section */
+  #hint {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+
+  /* Style for incorrect letter button */
+.red {
+  color: red !important;
+}
+
+/* Style for correct letter button */
+.green {
+  color: rgb(55, 221, 55) !important;
+}
+
+
+/* Style the reset button */
+#reset {
+  background-color: #3498db;
+  color: white;
+  padding: 14px 28px; /* Increase padding to make the button larger */
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add a transform transition */
+}
+
+#reset:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  transform: scale(1.1); /* Enlarge the button on hover */
+}
+
+/* Style the hint button */
+#help {
+  background-color: #2ecc71;
+  color: white;
+  padding: 14px 28px; /* Increase padding to make the button larger */
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add a transform transition */
+}
+
+#help:hover {
+  background-color: #27ae60; /* Darker green on hover */
+  transform: scale(1.1); /* Enlarge the button on hover */
+}
+
+
+/* Style for the right side (snowman) */
+.right-side {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  background-image: url('../images/empty.jpg'); /* Set the snowman image as the background */
+  background-size: cover; /* Cover the entire container with the background image */
+  background-repeat: no-repeat; /* Prevent the background image from repeating */
+  background-position: center; /* Center the background image */
+  background-color: rgba(128, 128, 128, 0.2); /* Add a touch of gray as background */
+  /* padding: 100px; Add padding around the snowman image */
+  margin: 30px; /* Add margin around the container (adjust as needed) */
+}
+
+
+
+
+
+
+  
